@@ -1,0 +1,116 @@
+@media only screen and (min-width:700px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .welcome_message {
+        color: #8f5849;
+        font-family: 'Montserrat', sans-serif;
+        font-size: xx-large;
+        margin: 130px 0px 0px 130px;
+    }
+
+    .caption {
+        color: #8f5849;
+        font-family: 'Montserrat', sans-serif;
+        margin: 10px 0px 0px 130px;
+        font-weight: 900;
+    }
+
+    .form_box {
+        margin: 40px 0px 0px 130px;
+    }
+
+    .email {
+        width: 500px;
+    }
+
+    .password {
+        width: 500px;
+    }
+
+    .email_wrapper {
+        margin-bottom: 25px;
+    }
+
+    .password_wrapper {
+        margin-top: 25px;
+    }
+
+    .forgot_password {
+        margin: 20px 0px 0px 0px;
+        color: cornflowerblue;
+    }
+
+    .forgot_password:hover {
+        color: blue;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .sign_in {
+        width: 450px;
+        border-radius: 15px;
+        margin-top: 20px;
+        height: 50px;
+        color: white;
+        background-color: #0073b1;
+        border: none;
+        font-size: large;
+    }
+
+    .sign_in:hover {
+        background-color: #1d70f5;
+    }
+
+    .footer {
+        background-color: #f0dbcc;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 300px;
+    }
+
+    .copyright_container {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+    .contact {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        margin: 0;
+        color: #8f5849;
+        font-family: sans-serif;
+    }
+
+    .contact:hover {
+        color: slateblue;
+        cursor: pointer;
+    }
+    
+    .copyright {
+        color: #8f5849; 
+    }
+
+    .articles { 
+        color: #8f5849;
+        font-family: sans-serif;
+        margin: 30px 0px 0px 0px;
+        cursor: pointer;
+    }
+
+    .articles:hover { 
+        color: slateblue;
+    }
+
+    .line1 {
+        display: flex;
+        justify-content: space-around;
+    }
+}
