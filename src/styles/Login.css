@@ -5,15 +5,42 @@
         padding: 0;
     }
 
+    .single_view {
+        display: none;
+    }
+
+    .double_view {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+        line-height: 2rem;
+        margin: 50px 0px 0px 130px;
+        font-family: 'Montserrat', sans-serif;
+        color: #2976c9;
+        font-weight: 900;
+    }
+
+    .india_img {
+        width: 1000px;
+        height: fit-content;
+    }
+
+    .left_view {
+        width: 60vw !important;
+    }
+
     .welcome_message {
-        color: #8f5849;
+        color: #2976c9;
         font-family: 'Montserrat', sans-serif;
         font-size: xx-large;
-        margin: 130px 0px 0px 130px;
+        margin: 60px 0px 0px 130px;
     }
 
     .caption {
-        color: #8f5849;
+        color: white;
         font-family: 'Montserrat', sans-serif;
         margin: 10px 0px 0px 130px;
         font-weight: 900;
@@ -41,32 +68,33 @@
 
     .forgot_password {
         margin: 20px 0px 0px 0px;
-        color: cornflowerblue;
+        color: #2976c9;
     }
 
     .forgot_password:hover {
-        color: blue;
         cursor: pointer;
-        font-family: 'Montserrat', sans-serif;
+        font-size: 16.5px;
+        font-weight: 400;
     }
 
     .sign_in {
-        width: 450px;
+        width: 400px;
         border-radius: 15px;
         margin-top: 20px;
         height: 50px;
         color: white;
-        background-color: #0073b1;
+        background-color: #2976c9;
         border: none;
         font-size: large;
     }
 
     .sign_in:hover {
-        background-color: #1d70f5;
+        background-color: #8f5849;
+        cursor: pointer;
     }
 
     .footer {
-        background-color: #f0dbcc;
+        background-color: #2976c9;
         position: fixed;
         bottom: 0;
         width: 100vw;
@@ -85,7 +113,7 @@
         justify-content: center;
         width: 100vw;
         margin: 0;
-        color: #8f5849;
+        color: white;
         font-family: sans-serif;
     }
 
@@ -95,11 +123,11 @@
     }
     
     .copyright {
-        color: #8f5849; 
+        color: #8f5849;
     }
 
     .articles { 
-        color: #8f5849;
+        color: white;
         font-family: sans-serif;
         margin: 30px 0px 0px 0px;
         cursor: pointer;
@@ -112,5 +140,174 @@
     .line1 {
         display: flex;
         justify-content: space-around;
+    }
+
+    .contact_header {
+        margin-top: 40px;
+    }
+
+    .line2 {
+        display: none;
+    }
+
+    .line3 { 
+        display: none;
+    }
+
+    .arts { 
+        display: none;
+    }
+}
+
+@media only screen and (max-width:699px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .double_view {
+        display: none;
+    }
+
+    .welcome_message {
+        color: #8f5849;
+        font-family: 'Montserrat', sans-serif;
+        font-size: xx-large;
+        margin: 50px 0px 0px 20px;
+    }
+
+    .caption {
+        color: #8f5849;
+        font-family: 'Montserrat', sans-serif;
+        margin: 10px 0px 0px 20px;
+        font-weight: 900;
+    }
+
+    .form_box {
+        margin: 40px 0px 0px 20px;
+    }
+
+    .email {
+        width: 400px;
+    }
+
+    .password {
+        width: 400px;
+    }
+
+    .email_wrapper {
+        margin-bottom: 25px;
+    }
+
+    .password_wrapper {
+        margin-top: 25px;
+    }
+
+    .forgot_password {
+        margin: 20px 0px 0px 0px;
+        color: #2976c9;
+    }
+
+    .forgot_password:hover {
+        color: #8f5849;
+        cursor: pointer;
+        font-size: 16.5px;
+    }
+
+    .sign_in {
+        width: 450px;
+        border-radius: 15px;
+        margin-top: 20px;
+        height: 50px;
+        color: white;
+        background-color: #2976c9;
+        border: none;
+        font-size: large;
+    }
+
+    .sign_in:hover {
+        background-color: #8f5849;
+        cursor: pointer;
+    }
+
+    .footer {
+        background-color: #2976c9;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 300px;
+    }
+
+    .copyright_container {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+    .contact {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        margin: 0;
+        color: white;
+        font-family: sans-serif;
+    }
+
+    .contact:hover {
+        color: slateblue;
+        cursor: pointer;
+    }
+    
+    .copyright {
+        color: white; 
+    }
+
+    .articles { 
+        display: none;
+    }
+
+    .articles:hover { 
+        color: slateblue;
+    }
+
+    .line1 {
+        display: none;
+    }
+
+    .contact_header {
+        margin-top: 40px;
+    }
+
+    .line2 {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .line3 {
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-around;
+    }
+
+    .arts { 
+        color: white;
+        font-family: sans-serif;
+        margin: 10px 0px 0px 0px;
+        cursor: pointer;
+    }
+
+    .arts:hover { 
+        color: slateblue;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+        line-height: 2rem;
+        margin: 50px 0px 0px 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #8f5849;
     }
 }
