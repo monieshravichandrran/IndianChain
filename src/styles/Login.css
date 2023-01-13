@@ -19,7 +19,7 @@
         line-height: 2rem;
         margin: 50px 0px 0px 130px;
         font-family: 'Montserrat', sans-serif;
-        color: #2976c9;
+        color: #FF671F;
         font-weight: 900;
     }
 
@@ -40,7 +40,7 @@
     }
 
     .caption {
-        color: white;
+        color: #046A38;
         font-family: 'Montserrat', sans-serif;
         margin: 10px 0px 0px 130px;
         font-weight: 900;
@@ -171,14 +171,14 @@
     }
 
     .welcome_message {
-        color: #8f5849;
+        color: #2976c9;
         font-family: 'Montserrat', sans-serif;
         font-size: xx-large;
         margin: 50px 0px 0px 20px;
     }
 
     .caption {
-        color: #8f5849;
+        color: #046A38;
         font-family: 'Montserrat', sans-serif;
         margin: 10px 0px 0px 20px;
         font-weight: 900;
@@ -189,11 +189,11 @@
     }
 
     .email {
-        width: 400px;
+        width: 80vw;
     }
 
     .password {
-        width: 400px;
+        width: 80vw;
     }
 
     .email_wrapper {
@@ -210,13 +210,13 @@
     }
 
     .forgot_password:hover {
-        color: #8f5849;
+        color: #2976c9;
         cursor: pointer;
         font-size: 16.5px;
     }
 
     .sign_in {
-        width: 450px;
+        width: 80vw;
         border-radius: 15px;
         margin-top: 20px;
         height: 50px;
@@ -308,6 +308,6 @@
         margin: 50px 0px 0px 20px;
         font-family: 'Montserrat', sans-serif;
         font-weight: 900;
-        color: #8f5849;
+        color: #FF671F;
     }
 }
