@@ -1,6 +1,6 @@
 # Indian Chain
 
-<div align="center"> <img align="center" alt="IndianChain" src="https://github.com/monieshravichandrran/IndianChain/blob/main/src/images/india.png?raw=true" height='135' width='380'> </a> </div>
+<div align="center"> <img align="center" alt="IndianChain" src="https://github.com/monieshravichandrran/IndianChain/blob/main/src/images/india.png?raw=true" height='400' width='600'> </a> </div>
 
 ## Making Citizen Documents Decentralized
 
@@ -57,10 +57,3 @@ $ npm start
 ```
 
 ```
-
-## Developed by:
-
-| S.No. | Name                  | GitHub Username                                       | LinkedIn Profile
-| ----- | --------------------- | ----------------------------------------------------- | --------------------------------------------------- |
-| 1.    | Moniesh Ravichandrran | [@Moniesh R](https://github.com/monieshravichandrran) | [@Moniesh R] (https://in.linkedin.com/in/moniesh)   |
-| 2.    | Venkat Narayan TR     | [@Venkat Narayan](https://github.com/venkatttwenty1)  | [@Venkat Narayan] (https://in.linkedin.com/in/venkat-narayan-t-r-5aaa31202) |
