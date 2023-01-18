@@ -1,30 +1,75 @@
-import React,{ useEffect } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Home from "./pages/Home";
-import web3 from "./ethereum/web3";
-import { useDispatch, useSelector } from "react-redux";
 
-function App() {
+import Citizen from "./pages/Citizen/Home";
+
+import Educational from "./pages/Educational/Home";
+
+import Organization from "./pages/Organization/Home";
+
+import Government from "./pages/Government/Home";
+
+import web3 from "./ethereum/web3";
+import { useDispatch } from "react-redux";
+import NotFound from "./pages/NotFound";
+
+export const RouteContext = createContext();
+
+const App = () => {
   const dispatch = useDispatch();
+  const [type, setType] = useState(-1);
   useEffect(() => {
     const getContract = async () => {
-        web3.eth.getAccounts().then((accounts,err)=>{
-          console.log(accounts);
-          dispatch({ type: "ACCOUNTS", payload: accounts });
-        })
+      web3.eth.getAccounts().then((accounts, err) => {
+        console.log(accounts);
+        dispatch({ type: "ACCOUNTS", payload: accounts });
+      })
     };
     getContract();
-}, []);
+  }, []);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/signup" element = {<Signup />} /> 
-        <Route path="/home" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <RouteContext.Provider value={{ type, setType }}>
+      <BrowserRouter>
+        <Routes>
+          {type == -1 ?
+            <>
+              <Route path="/" element={<Login />} />
+              <Route path="*" element={<NotFound />} />
+            </>
+            :
+            <>{type == 1 ?
+              <>
+                <Route path="/" element={<Citizen />} />
+                <Route path="*" element={<NotFound />} />
+              </> :
+              <>
+                {type == 2 ?
+                  <>
+                    <Route path="/" element={<Educational />} />
+                    <Route path="*" element={<NotFound />} />
+                  </> : <>
+                    {type == 3 ?
+                      <>
+                        <Route path="/" element={<Organization />} />
+                        <Route path="*" element={<NotFound />} />
+                      </>
+                      :
+                      <>{type == 4 ?
+                        <>
+                          <Route path="/" element={<Government />} />
+                          <Route path="/citizen/add" element={<Signup />} />
+                          <Route path="*" element={<NotFound />} />
+                        </> : null}
+                      </>}
+                  </>}
+              </>
+            }</>
+          }
+        </Routes>
+      </BrowserRouter>
+    </RouteContext.Provider>
   );
 }
 

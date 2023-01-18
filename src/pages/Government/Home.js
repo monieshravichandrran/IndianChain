@@ -1,9 +1,9 @@
 import React,{useState} from "react";
-import india from "../images/india.png";
-import "../styles/Login.css";
+import india from "../../images/india.png";
+import "../../styles/Login.css";
 import {useSelector, useDispatch} from "react-redux";
 
-const Home = () => {
+const Government = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   return (
@@ -55,4 +55,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Government;

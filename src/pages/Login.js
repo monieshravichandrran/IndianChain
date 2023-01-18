@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TextField } from "@mui/material";
 import india from "../images/india.png";
 import "../styles/Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { RouteContext } from "../App";
 
 const Login = () => {
 
@@ -13,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const address = useSelector((state) => state.accounts);
+  const Route = useContext(RouteContext);
 
   const submitHandler = () => {
     const payload = {
@@ -30,8 +32,8 @@ const Login = () => {
       if(data.data.type == -1){
         return;
       }
+      Route.setType(data.data.type);
       dispatch({ type: "SIGN_IN", payload: { user: email_phno, type: data.data.type, account: address } });
-      navigate('/home');
     });
   }
 
