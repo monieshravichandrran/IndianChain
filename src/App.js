@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     const getContract = async () => {
         web3.eth.getAccounts().then((accounts,err)=>{
+          console.log(accounts);
           dispatch({ type: "ACCOUNTS", payload: accounts });
         })
     };

@@ -95,14 +95,15 @@
 
     .footer {
         background-color: #2976c9;
-        position: fixed;
+        margin-top: 50px;
+        position: relative;
         bottom: 0;
         width: 100vw;
         height: 300px;
     }
 
     .copyright_container {
-        position: fixed;
+        position: relative;
         bottom: 0;
         display: flex;
         justify-content: center;
@@ -233,14 +234,15 @@
 
     .footer {
         background-color: #2976c9;
-        position: fixed;
+        position: relative;
+        margin-top: 50px;
         bottom: 0;
         width: 100vw;
         height: 300px;
     }
 
     .copyright_container {
-        position: fixed;
+        position: relative;
         bottom: 0;
         display: flex;
         justify-content: center;
