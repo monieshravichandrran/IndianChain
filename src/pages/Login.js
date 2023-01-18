@@ -21,7 +21,7 @@ const Login = () => {
       address: address ? address[0] : null
     };
     console.log(payload);
-    axios.post('http://localhost:8000/login', payload).then((data, err) => {
+    axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + '/login', payload).then((data, err) => {
       if (err) {
         console.log("failed to post");
         return;
