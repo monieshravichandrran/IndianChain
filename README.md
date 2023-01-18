@@ -1,71 +1,66 @@
-# Getting Started with Create React App
+# Indian Chain
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center"> <img align="center" alt="IndianChain" src="https://github.com/monieshravichandrran/IndianChain/blob/main/src/images/india.png?raw=true" height='135' width='380'> </a> </div>
 
-## Available Scripts
+## Making Citizen Documents Decentralized
+
+**Indian-Chain** is a React JS based which using Ethereum Blockchain Solidity Smart Contracts to help users to get the required online resources in a faster manner. It is also made user-friendly to make it easily accessible to all sections of the society. To avoid documents forgery and ensure security , we cross check all details from multiple-sources.
+
+**Indian-Chain** , being an application common to all the components of the system , It provides a secure influx between Citizens, educational institutions and organizations. To provide extra-security to transfer of information, we have enabled Request Access - Grant Access system. Users and others who have access to his blockchain has the rights to view the documents in his blockchain.
+
+## Tech Used
+
+-   **Frontend :** ReactJS
+-   **Backend :** Ethereum BlockChain,Node JS
+-   **Database :** MongoDb
+-   **Version Control :** Git and GitHub
+
+## How to Run Application
+
+-   Install Nodejs from the official website in your system if not available.
+
+-   Fork and Clone the Repo
+
+```
+$ git clone https://github.com/monieshravichandrran/IndianChain.git
+```
+
+-   To enable Blockchain,
+    - Through Metamask
+
+    ```
+    Install Metamask.
+    Create your own Goerli Test account.
+    ```
+    - Through Ganache
+
+    ```
+    Install Ganache on your local machine.
+    Start a new ethereum workspace.
+    Go to the ganache branch from the main branch in cloned repo 
+    
+    $ git checkout ganache (to be added soon)
+    ```
 
 In the project directory, you can run:
 
-### `npm start`
+-   Install the Dependencies from `npm`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+$ npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   Now, run the Server and see the demo at [http://localhost:3000/](http://localhost:3000/)
 
-### `npm test`
+```
+$ npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+## Developed by:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# IndianChain
+| S.No. | Name                  | GitHub Username                                       | LinkedIn Profile
+| ----- | --------------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| 1.    | Moniesh Ravichandrran | [@Moniesh R](https://github.com/monieshravichandrran) | [@Moniesh R] (https://in.linkedin.com/in/moniesh)   |
+| 2.    | Venkat Narayan TR     | [@Venkat Narayan](https://github.com/venkatttwenty1)  | [@Venkat Narayan] (https://in.linkedin.com/in/venkat-narayan-t-r-5aaa31202) |
