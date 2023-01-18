@@ -1,4 +1,4 @@
-export default (state = {user:null,type:-1}, action) => {
+export default (state = {user:null,type:-1,account: null}, action) => {
     switch (action.type) {
         case "SIGN_IN":
             return action.payload;

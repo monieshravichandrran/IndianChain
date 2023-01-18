@@ -3,23 +3,35 @@ import { TextField } from "@mui/material";
 import india from "../images/india.png";
 import "../styles/Login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
 
   const [email_phno, setEmail_phno] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const address = useSelector((state) => state.accounts);
 
   const submitHandler = () => {
     const payload = {
-      email_phno: email_phno,
-      password: password
+      email: email_phno,
+      password: password,
+      address: address ? address[0] : null
     };
     console.log(payload);
-    axios.post('http://localhost:8000/login',payload).then((data,err)=>{
-      if(err){
+    axios.post('http://localhost:8000/login', payload).then((data, err) => {
+      if (err) {
         console.log("failed to post");
         return;
       }
+      console.log(data);
+      if(data.data.type == -1){
+        return;
+      }
+      dispatch({ type: "SIGN_IN", payload: { user: email_phno, type: data.data.type, account: address } });
+      navigate('/home');
     });
   }
 
@@ -49,9 +61,9 @@ const Login = () => {
       </div>
       <div className="double_view">
         <div className="left_view">
-        <h2 className="heading">
-          Indian Chain
-        </h2>
+          <h2 className="heading">
+            Indian Chain
+          </h2>
           <h1 className="welcome_message">Welcome to your professional community</h1>
           <p className="caption">A single place for all your documents and managing citizens</p>
           <div className="form_box">
