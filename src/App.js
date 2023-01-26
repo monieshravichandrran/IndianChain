@@ -24,7 +24,7 @@ const App = () => {
     const getContract = async () => {
       const instance = new web3.eth.Contract(
         JSON.parse(Record.interface),
-        contractAddress
+        process.env.REACT_APP_CONTRACT_ADDRESS
       );
       web3.eth.getAccounts().then((accounts, err) => {
         console.log(accounts);
