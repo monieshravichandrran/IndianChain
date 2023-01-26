@@ -8,7 +8,7 @@ const source = fs.readFileSync(filePath,"utf-8");
 var input = {
     language: 'Solidity',
     sources: {
-        'base.sol' : {
+        'Inbox' : {
             content: source
         }
     },
@@ -21,6 +21,7 @@ var input = {
     }
 };
 
-var output = JSON.parse(solc.compile(JSON.stringify(input)));
+const data = (JSON.parse(solc.compile(JSON.stringify(input)))).contracts["Inbox"];
+fs.writeFileSync(path.resolve(__dirname,"build","Record.json"),JSON.stringify(data));
 
-console.log(output);
+module.exports = data;

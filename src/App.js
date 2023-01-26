@@ -10,7 +10,7 @@ import Educational from "./pages/Educational/Home";
 import Organization from "./pages/Organization/Home";
 
 import Government from "./pages/Government/Home";
-
+import Record from "./ethereum/build/Record.json";
 import web3 from "./ethereum/web3";
 import { useDispatch } from "react-redux";
 import NotFound from "./pages/NotFound";
@@ -22,10 +22,15 @@ const App = () => {
   const [type, setType] = useState(-1);
   useEffect(() => {
     const getContract = async () => {
+      const instance = new web3.eth.Contract(
+        JSON.parse(Record.interface),
+        contractAddress
+      );
       web3.eth.getAccounts().then((accounts, err) => {
         console.log(accounts);
         dispatch({ type: "ACCOUNTS", payload: accounts });
       })
+      dispatch({ type: "CONTRACT", payload: instance });
     };
     getContract();
   }, []);

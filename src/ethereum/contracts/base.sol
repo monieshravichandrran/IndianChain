@@ -19,6 +19,10 @@ contract Record {
     mapping(address => mapping(address => bool)) public citizen_chain_write_access;
     uint256 del = 99;
 
+    constructor(){
+        administrator = msg.sender;
+    }
+
     function addCitizen(address citi) public payable {
         require(msg.sender == administrator);
         citizen[citi] = true;
