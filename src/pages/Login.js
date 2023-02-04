@@ -6,15 +6,32 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteContext } from "../App";
+import FileViewer from 'react-file-viewer';
+import Modal from 'react-modal';
 
 const Login = () => {
 
   const [email_phno, setEmail_phno] = useState();
   const [password, setPassword] = useState();
+  const [showFile, setShowFile] = useState(false);
+  const [fileLink, setFilelink] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const address = useSelector((state) => state.accounts);
   const Route = useContext(RouteContext);
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      width:"70%",
+      height: "70%",
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
   const submitHandler = () => {
     const payload = {
@@ -29,7 +46,7 @@ const Login = () => {
         return;
       }
       console.log(data);
-      if(data.data.type == -1){
+      if (data.data.type == -1) {
         return;
       }
       Route.setType(data.data.type);
@@ -40,6 +57,21 @@ const Login = () => {
 
   return (
     <>
+      <Modal
+        isOpen={showFile}
+        contentLabel="Example Modal"
+        onAfterOpen={() => { }}
+        onRequestClose={() => { setShowFile(false) }}
+        style={customStyles}
+      >
+        <FileViewer
+          fileType={"png"}
+          filePath={fileLink}
+          errorComponent={<h1>Error in getting file</h1>}
+          onError={() => {
+            console.log("error");
+          }} />
+      </Modal>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain

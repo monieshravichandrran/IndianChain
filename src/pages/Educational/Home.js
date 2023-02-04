@@ -1,19 +1,29 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import india from "../../images/india.png";
 import "../../styles/Login.css";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
 
 const Educational = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   return (
     <>
+      <div className="topnav">
+        <Link to="/" className="spans">Indian Chain</Link>
+        <Link to="/add" className="span inactive">Add Students</Link>
+        <Link to="/view" className="span inactive">View Students</Link>
+        <Link to="/profile" className="span inactive">Profile</Link>
+        <button className="btn">Logout</button>
+      </div>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain
         </h2>
         <h1 className="welcome_message">Welcome <b>{user.user}</b> to your professional community</h1>
         <p className="caption">A single place for all your documents and managing citizens</p>
+        <img className="india_img" src={india} alt="India" />
       </div>
       <div className="double_view">
         <div className="left_view">
@@ -21,7 +31,6 @@ const Educational = () => {
             Indian Chain
           </h2>
           <h1 className="welcome_message">Welcome <b>{user.user}</b>  to your professional community</h1>
-          <p className="caption">A single place for all your documents and managing citizens</p>
         </div>
         <div>
           <img className="india_img" src={india} alt="India" />

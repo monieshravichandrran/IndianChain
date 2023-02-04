@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Citizen from "./pages/Citizen/Home";
 
 import Educational from "./pages/Educational/Home";
+import EducationalAdd from "./pages/Educational/Add";
 
 import Organization from "./pages/Organization/Home";
 
@@ -22,15 +23,14 @@ const App = () => {
   const [type, setType] = useState(-1);
   useEffect(() => {
     const getContract = async () => {
-      const instance = new web3.eth.Contract(
-        JSON.parse(Record.interface),
-        process.env.REACT_APP_CONTRACT_ADDRESS
-      );
+      // const instance = new web3.eth.Contract(
+      //   JSON.parse(Record.interface),
+      //   process.env.REACT_APP_CONTRACT_ADDRESS
+      // );
       web3.eth.getAccounts().then((accounts, err) => {
-        console.log(accounts);
         dispatch({ type: "ACCOUNTS", payload: accounts });
       })
-      dispatch({ type: "CONTRACT", payload: instance });
+      //dispatch({ type: "CONTRACT", payload: instance });
     };
     getContract();
   }, []);
@@ -53,6 +53,7 @@ const App = () => {
                 {type == 2 ?
                   <>
                     <Route path="/" element={<Educational />} />
+                    <Route path="/add" element={<EducationalAdd />} />
                     <Route path="*" element={<NotFound />} />
                   </> : <>
                     {type == 3 ?

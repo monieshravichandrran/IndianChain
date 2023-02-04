@@ -1,19 +1,28 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import india from "../../images/india.png";
 import "../../styles/Login.css";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../components/Navbar";
 
 const Government = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   return (
     <>
+      <div className="topnav">
+        <span className="spans">Indian Chain</span>
+        <span className="span inactive">Add Citizen</span>
+        <span className="span inactive">View Citizen</span>
+        <span className="span inactive">Profile</span>
+        <button className="btn">Logout</button>
+      </div>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain
         </h2>
         <h1 className="welcome_message">Welcome <b>{user.user}</b> to your professional community</h1>
         <p className="caption">A single place for all your documents and managing citizens</p>
+        <img className="india_img" src={india} alt="India" />
       </div>
       <div className="double_view">
         <div className="left_view">
@@ -21,7 +30,6 @@ const Government = () => {
             Indian Chain
           </h2>
           <h1 className="welcome_message">Welcome <b>{user.user}</b>  to your professional community</h1>
-          <p className="caption">A single place for all your documents and managing citizens</p>
         </div>
         <div>
           <img className="india_img" src={india} alt="India" />
