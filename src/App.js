@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 import Citizen from "./pages/Citizen/Home";
+import CitizenView from "./pages/Citizen/View";
 
 import Educational from "./pages/Educational/Home";
 import EducationalAdd from "./pages/Educational/Add";
@@ -49,6 +50,7 @@ const App = () => {
             <>{type == 1 ?
               <>
                 <Route path="/" element={<Citizen />} />
+                <Route path="/view" element={<CitizenView />} />
                 <Route path="*" element={<NotFound />} />
               </> :
               <>
