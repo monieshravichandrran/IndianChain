@@ -7,6 +7,7 @@ import Citizen from "./pages/Citizen/Home";
 
 import Educational from "./pages/Educational/Home";
 import EducationalAdd from "./pages/Educational/Add";
+import EducationalRequest from "./pages/Educational/Request";
 
 import Organization from "./pages/Organization/Home";
 
@@ -54,6 +55,7 @@ const App = () => {
                   <>
                     <Route path="/" element={<Educational />} />
                     <Route path="/add" element={<EducationalAdd />} />
+                    <Route path="/request" element={<EducationalRequest />} />
                     <Route path="*" element={<NotFound />} />
                   </> : <>
                     {type == 3 ?

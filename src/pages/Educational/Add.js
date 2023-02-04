@@ -27,7 +27,7 @@ const EducationalAdd = () => {
             <Link to="/add" className="li active"><span className="a">Add Files</span></Link>
             <Link to="/view" className="li"><span className="a">View Student</span></Link>
             <Link to="/profile" className="li"><span className="a">Profile</span></Link>
-            <button className="li"><span className="a">Logout</span></button>
+            <Link to="/request" className="li"><span className="a">Request</span></Link>
         </ul>
         <div className="flex justify-center mb-24">
             <div>
@@ -49,7 +49,7 @@ const EducationalAdd = () => {
                     <label class="block text-gray-700 text-sm font-bold mb-2">
                         Upload file
                     </label>
-                    <input id="file" onChange={(event) => { setUploadedFile(event.target.files[0]) }} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="EventDescription" type="file" placeholder="File" />
+                    <input id="file" onChange={(event) => { setUploadedFile(event.target.files[0]) }} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" placeholder="File" />
                 </div>
                 <button className="bg-blue-600 text-white flex m-auto mt-10 p-2 border rounded" onClick={submitHandler}>Add document</button>
             </div>
