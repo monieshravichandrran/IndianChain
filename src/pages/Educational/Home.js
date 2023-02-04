@@ -10,13 +10,13 @@ const Educational = () => {
   const user = useSelector((state) => state.auth);
   return (
     <>
-      <div className="topnav">
-        <Link to="/" className="spans">Indian Chain</Link>
-        <Link to="/add" className="span inactive">Add Students</Link>
-        <Link to="/view" className="span inactive">View Students</Link>
-        <Link to="/profile" className="span inactive">Profile</Link>
-        <button className="btn">Logout</button>
-      </div>
+    <ul className="ul">
+      <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
+      <Link to="/add" className="li"><span className="a">Add Files</span></Link>
+      <Link to="/view" className="li"><span className="a">View Student</span></Link>
+      <Link to="/profile" className="li"><span className="a">Profile</span></Link>
+      <button className="li"><span className="a">Logout</span></button>
+    </ul>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain

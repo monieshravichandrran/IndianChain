@@ -57,21 +57,6 @@ const Login = () => {
 
   return (
     <>
-      <Modal
-        isOpen={showFile}
-        contentLabel="Example Modal"
-        onAfterOpen={() => { }}
-        onRequestClose={() => { setShowFile(false) }}
-        style={customStyles}
-      >
-        <FileViewer
-          fileType={"png"}
-          filePath={fileLink}
-          errorComponent={<h1>Error in getting file</h1>}
-          onError={() => {
-            console.log("error");
-          }} />
-      </Modal>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain
