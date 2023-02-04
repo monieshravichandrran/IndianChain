@@ -6,5 +6,5 @@ import contractReducer from "./contractsReducer";
 export default combineReducers({
   auth: authReducer,
   accounts: accountsReducer,
-  contracts: contractReducer
+  contract: contractReducer
 });

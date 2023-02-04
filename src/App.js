@@ -24,14 +24,15 @@ const App = () => {
   const [type, setType] = useState(-1);
   useEffect(() => {
     const getContract = async () => {
-      // const instance = new web3.eth.Contract(
-      //   JSON.parse(Record.interface),
-      //   process.env.REACT_APP_CONTRACT_ADDRESS
-      // );
+      const instance = new web3.eth.Contract(
+        Record.Record.abi,
+        process.env.REACT_APP_CONTRACT_ADDRESS
+      );
       web3.eth.getAccounts().then((accounts, err) => {
         dispatch({ type: "ACCOUNTS", payload: accounts });
       })
-      //dispatch({ type: "CONTRACT", payload: instance });
+      dispatch({ type: "CONTRACT", payload: instance });
+      console.log(instance);
     };
     getContract();
   }, []);

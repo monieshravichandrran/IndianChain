@@ -13,6 +13,7 @@ const EducationalRequest = () => {
     const [selectedType, setSelectedType] = useState();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
+    const { accounts, contract } = useSelector((state) => state);
 
     const options = [
         {
@@ -29,10 +30,8 @@ const EducationalRequest = () => {
     const submitHandler = async (e) => {
         setMessage("");
         e.preventDefault();
-        console.log(user);
         const payload = { authority: user.user, citizen: studentEmail, type: selectedType.value };
-        const result = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+ "/give-permission", payload);
-        console.log(result);
+        const result = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+ "/add-request", payload);
         setMessage(result.data.msg);
     }
 

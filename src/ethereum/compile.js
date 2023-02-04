@@ -22,6 +22,7 @@ var input = {
 };
 
 const data = (JSON.parse(solc.compile(JSON.stringify(input)))).contracts["Inbox"];
+console.log(data.Record);
 fs.writeFileSync(path.resolve(__dirname,"build","Record.json"),JSON.stringify(data));
 
-module.exports = data;
+module.exports = data.Record;

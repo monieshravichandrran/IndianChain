@@ -17,7 +17,7 @@ contract Record {
     mapping(address =>uint) public organizational_documents_count;
     mapping(address => mapping(address => bool)) public citizen_chain_read_access;
     mapping(address => mapping(address => bool)) public citizen_chain_write_access;
-    uint256 del = 99;
+    uint256 del = 999;
 
     constructor(){
         administrator = msg.sender;
@@ -49,6 +49,7 @@ contract Record {
     function provideWriteAccess(address req) public payable {
         require(citizen[msg.sender]);
         citizen_chain_write_access[msg.sender][req] = true;
+        citizen_chain_read_access[msg.sender][req] = true;
     }
 
     function removeReadAccess(address req) public payable {
@@ -58,7 +59,8 @@ contract Record {
 
     function removeWriteAccess(address req) public payable {
         require(citizen[msg.sender]);
-        citizen_chain_write_access[msg.sender][req] = false;    
+        citizen_chain_write_access[msg.sender][req] = false;   
+        citizen_chain_read_access[msg.sender][req] = false; 
     }
 
     function addGovernmentDocument(address citi, uint256[] memory doc) public payable {

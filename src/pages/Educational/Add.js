@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Login.css";
 import { Web3Storage } from 'web3.storage';
+import { useSelector, useDispatch } from "react-redux";
 
 const EducationalAdd = () => {
     const [studentEmail, setStudentEmail] = useState();
     const [uploadedFile, setUploadedFile] = useState("");
-
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth);
+    const { accounts, contract } = useSelector((state) => state);
     const client = new Web3Storage({ token: process.env.REACT_APP_WEB3_IPFS_TOKEN });
 
     const submitHandler = async(e) => {
