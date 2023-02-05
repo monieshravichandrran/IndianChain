@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../styles/Login.css";
 import { Web3Storage } from 'web3.storage';
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 const EducationalAdd = () => {
     const [studentEmail, setStudentEmail] = useState();
@@ -22,6 +23,13 @@ const EducationalAdd = () => {
         for (let i = 0; i < response.length; ++i)
           asciiArray.push(response.charCodeAt(i));
         console.log(asciiArray);
+        const studentAddress = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+"/get-address",{email: studentEmail});
+        console.log(studentAddress)
+        try{
+            contract.methods.addEducationalDocument(studentAddress.data.address,asciiArray).send({from: accounts[0], gas: "6100000"});
+        }catch(err){
+            console.log(err);
+        }
     }
 
     return (<>

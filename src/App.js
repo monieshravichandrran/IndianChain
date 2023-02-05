@@ -1,14 +1,15 @@
 import React, { useEffect, useState, createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 
 import Citizen from "./pages/Citizen/Home";
 import CitizenView from "./pages/Citizen/View";
+import CitizenRequest from "./pages/Citizen/Request";
 
 import Educational from "./pages/Educational/Home";
 import EducationalAdd from "./pages/Educational/Add";
 import EducationalRequest from "./pages/Educational/Request";
+import EducationalView from "./pages/Educational/View";
 
 import Organization from "./pages/Organization/Home";
 
@@ -52,6 +53,7 @@ const App = () => {
             <>{type == 1 ?
               <>
                 <Route path="/" element={<Citizen />} />
+                <Route path="/request" element={<CitizenRequest />}/>
                 <Route path="/view" element={<CitizenView />} />
                 <Route path="*" element={<NotFound />} />
               </> :
@@ -61,6 +63,7 @@ const App = () => {
                     <Route path="/" element={<Educational />} />
                     <Route path="/add" element={<EducationalAdd />} />
                     <Route path="/request" element={<EducationalRequest />} />
+                    <Route path="/view" element={<EducationalView />} />
                     <Route path="*" element={<NotFound />} />
                   </> : <>
                     {type == 3 ?

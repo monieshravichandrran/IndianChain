@@ -12,7 +12,7 @@ const Citizen = () => {
     <>
       <ul className="ul">
         <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
-        <Link to="/requests" className="li"><span className="a">Requests</span></Link>
+        <Link to="/request" className="li"><span className="a">Requests</span></Link>
         <Link to="/view" className="li"><span className="a">View your chain</span></Link>
         <Link to="/profile" className="li"><span className="a">Profile</span></Link>
         <Link to="/request" className="li"><span className="a">Logout</span></Link>
