@@ -3,7 +3,7 @@ import india from "../../images/india.png";
 import "../../styles/Login.css";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { Space, Table, Tag } from 'antd';
+import TableItem from "../../components/TableItem";
 import { Link } from "react-router-dom";
 
 const CitizenView = () => {
@@ -15,7 +15,7 @@ const CitizenView = () => {
     const getRequests = async () => {
       const a = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/get-requests", { email: user.user });
       setRequests(a.data);
-       console.log(a.data)
+      console.log(a.data)
       setShow(true);
     }
     getRequests();
@@ -35,7 +35,7 @@ const CitizenView = () => {
     <>
       <ul className="ul">
         <Link to="/" className="li"><span className="a">IndiaChain</span></Link>
-        <Link to="/requests" className="li active"><span className="a">Requests</span></Link>
+        <Link to="/request" className="li active"><span className="a">Requests</span></Link>
         <Link to="/view" className="li"><span className="a">View your chain</span></Link>
         <Link to="/profile" className="li"><span className="a">Profile</span></Link>
         <Link to="/request" className="li"><span className="a">Logout</span></Link>
@@ -43,12 +43,48 @@ const CitizenView = () => {
       {show ?
         <>
           <div className="w-full flex justify-center">
-            <h2 className="heading">
+            <div>
+            <h2 className="mt-20 text-orange-400 text-4xl">
               Indian Chain
             </h2>
-            <p className="">You have {requests?.length} requests</p>
+            <p align="center" className="mt-12">You have {requests?.length} requests</p>
+            </div>
           </div>
-          <Table columns={columns} dataSource={requests} />
+          <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full text-center">
+                    <thead class="border-b">
+                      <tr className="border-b bg-indigo-100 border-indigo-200">
+                        <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                          Request From
+                        </th>
+                        <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                          Request Type
+                        </th>
+                        <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                          Accept
+                        </th>
+                        <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                          Reject
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="">
+                      {requests?.map((item)=>
+                        <TableItem
+                          from={item.authority}
+                          type={item.type}
+                          user={user.user}
+                        />
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="footer">
             <div className="line1">
               <div className="articles">Read new updates</div>

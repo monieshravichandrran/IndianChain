@@ -103,6 +103,7 @@ const Login = () => {
           <img className="india_img" src={india} alt="India" />
         </div>
       </div>
+      <div className="abc">
       <div className="footer">
         <div className="line1">
           <div className="articles">Read new updates</div>
@@ -126,6 +127,7 @@ const Login = () => {
         <div className="contact"><p>Phone: +91 1234567890</p></div>
         <div className="contact"><p>Twitter</p></div>
         <div className="contact"><p>Email</p></div>
+      </div>
       </div>
     </>
   )

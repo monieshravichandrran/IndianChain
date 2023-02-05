@@ -3,19 +3,17 @@ import india from "../../images/india.png";
 import "../../styles/Login.css";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
 
 const Government = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   return (
     <>
-      <div className="topnav">
-        <span className="spans">Indian Chain</span>
-        <span className="span inactive">Add Citizen</span>
-        <span className="span inactive">View Citizen</span>
-        <span className="span inactive">Profile</span>
-        <button className="btn">Logout</button>
-      </div>
+      <ul className="ul">
+        <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
+        <Link to="/citizen/add" className="li"><span className="a">Add Users</span></Link>
+      </ul>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain

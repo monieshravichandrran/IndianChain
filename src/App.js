@@ -13,6 +13,8 @@ import EducationalRequest from "./pages/Educational/Request";
 import Organization from "./pages/Organization/Home";
 
 import Government from "./pages/Government/Home";
+import GovernmentAdd from "./pages/Government/Add";
+
 import Record from "./ethereum/build/Record.json";
 import web3 from "./ethereum/web3";
 import { useDispatch } from "react-redux";
@@ -70,7 +72,7 @@ const App = () => {
                       <>{type == 4 ?
                         <>
                           <Route path="/" element={<Government />} />
-                          <Route path="/citizen/add" element={<Signup />} />
+                          <Route path="/citizen/add" element={<GovernmentAdd />} />
                           <Route path="*" element={<NotFound />} />
                         </> : null}
                       </>}
