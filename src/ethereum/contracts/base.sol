@@ -6,6 +6,8 @@ contract Record {
     uint256 public educational_institutions_count;
     uint256 public organization_count;
     address public administrator;
+    mapping(address => string) public authentication;
+    mapping(address => string) public resume;
     mapping(address => bool) public citizen;
     mapping(address => bool) public educational_institutions;
     mapping(address => bool) public organization;
@@ -21,24 +23,35 @@ contract Record {
 
     constructor(){
         administrator = msg.sender;
+        authentication[msg.sender] = "{\"email\":\"eseva@gmail.com\",\"password\":\"123456\",\"type\":4}";
     }
 
-    function addCitizen(address citi) public payable {
+    function addCitizen(address citi, string memory auth) public payable {
         require(msg.sender == administrator);
         citizen[citi] = true;
+        authentication[citi] = auth;
+        resume[citi] = auth;
         citizen_count++;
     }
 
-    function addEducationalInstitution(address educational) public payable {
+    function addEducationalInstitution(address educational, string memory auth) public payable {
         require(msg.sender == administrator);
         educational_institutions[educational] = true;
+        authentication[educational] = auth;
+        resume[educational] = auth;
         educational_institutions_count++;
     }
 
-    function addOrganization(address org) public payable {
+    function addOrganization(address org, string memory auth) public payable {
         require(msg.sender == administrator);
         organization[org] = true;
+        authentication[org] = auth;
+        resume[org] = auth;
         organization_count++;
+    }
+    
+    function login() public view returns (string memory) {
+        return authentication[msg.sender];
     }
 
     function provideReadAccess(address req) public payable {
@@ -63,7 +76,7 @@ contract Record {
         citizen_chain_read_access[msg.sender][req] = false; 
     }
 
-    function addGovernmentDocument(address citi, uint256[] memory doc) public payable {
+    function addGovernmentDocument(address citi, uint256[] memory doc, string memory description) public payable {
         require(msg.sender == administrator);
         require(citizen[citi]);
         for (uint256 i = 0; i < doc.length; ++i) {
@@ -71,9 +84,11 @@ contract Record {
         }
         government_documents[citi].push(del);
         government_documents_count[citi]++;
+        resume[citi] = string.concat(resume[citi],"\n");
+        resume[citi] = string.concat(resume[citi],description);
     }
 
-    function addEducationalDocument(address citi, uint256[] memory doc) public payable {
+    function addEducationalDocument(address citi, uint256[] memory doc, string memory description) public payable {
         require(educational_institutions[msg.sender]);
         require(citizen[citi]);
         require(citizen_chain_write_access[citi][msg.sender]);
@@ -82,9 +97,11 @@ contract Record {
         }
         educational_documents[citi].push(del);
         educational_documents_count[citi]++;
+        resume[citi] = string.concat(resume[citi],"\n");
+        resume[citi] = string.concat(resume[citi],description);
     }
 
-    function addOrganizationDocument(address citi, uint256[] memory doc) public payable {
+    function addOrganizationDocument(address citi, uint256[] memory doc, string memory description) public payable {
         require(organization[msg.sender]);
         require(citizen[citi]);
         require(citizen_chain_write_access[citi][msg.sender]);
@@ -93,6 +110,8 @@ contract Record {
         }
         organizational_documents[citi].push(del);
         organizational_documents_count[citi]++;
+        resume[citi] = string.concat(resume[citi],"\n");
+        resume[citi] = string.concat(resume[citi],description);
     }
 
     function getGovernmentDocument(address citi) public view returns (uint256[] memory) {
@@ -111,6 +130,10 @@ contract Record {
         require(citizen[citi]);
         require(citizen_chain_read_access[citi][msg.sender]);
         return organizational_documents[citi];
+    }
+
+    function getResume(address citi) public view returns(string memory){
+        return resume[citi];
     }
 
 }

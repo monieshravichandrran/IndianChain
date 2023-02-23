@@ -16,6 +16,8 @@ const Login = () => {
   const [fileLink, setFilelink] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth);
+  const { accounts, contract } = useSelector((state) => state);
   const address = useSelector((state) => state.accounts);
   const Route = useContext(RouteContext);
 
@@ -26,31 +28,32 @@ const Login = () => {
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
-      width:"70%",
+      width: "70%",
       height: "70%",
       transform: 'translate(-50%, -50%)',
     },
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     const payload = {
       email: email_phno,
       password: password,
       address: address ? address[0] : null
     };
-    console.log(payload);
-    axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + '/login', payload).then((data, err) => {
-      if (err) {
-        console.log("failed to post");
-        return;
-      }
-      console.log(data);
-      if (data.data.type == -1) {
-        return;
-      }
-      Route.setType(data.data.type);
-      dispatch({ type: "SIGN_IN", payload: { user: email_phno, type: data.data.type, account: address } });
-    });
+    if (!address) {
+      return;
+    }
+    const response = await contract.methods.login().call({ from: accounts[0] });
+    if (!response) {
+      return;
+    }
+    console.log(response);
+    const resp = JSON.parse(response);
+    if (resp.email == payload.email && resp.password == payload.password) {
+      Route.setType(resp.type);
+      dispatch({ type: "SIGN_IN", payload: { user: email_phno, type: resp.type, account: address } });
+    }
+    dispatch({ type: "SIGN_IN", payload: { user: email_phno, type: resp.type, account: address } });
   }
 
 
@@ -104,30 +107,30 @@ const Login = () => {
         </div>
       </div>
       <div className="abc">
-      <div className="footer">
-        <div className="line1">
-          <div className="articles">Read new updates</div>
-          <div className="articles">Privacy Policy</div>
-          <div className="articles">User Policy</div>
-          <div className="articles">About Us</div>
-          <div className="articles">Careers</div>
-          <div className="articles">Services</div>
+        <div className="footer">
+          <div className="line1">
+            <div className="articles">Read new updates</div>
+            <div className="articles">Privacy Policy</div>
+            <div className="articles">User Policy</div>
+            <div className="articles">About Us</div>
+            <div className="articles">Careers</div>
+            <div className="articles">Services</div>
+          </div>
+          <div className="line2">
+            <div className="arts">Read new updates</div>
+            <div className="arts">Privacy Policy</div>
+            <div className="arts">User Policy</div>
+          </div>
+          <div className="line3">
+            <div className="arts">About Us</div>
+            <div className="arts">Careers</div>
+            <div className="arts">Services</div>
+          </div>
+          <div className="contact"><h4 className="contact_header">Contact us on</h4></div>
+          <div className="contact"><p>Phone: +91 1234567890</p></div>
+          <div className="contact"><p>Twitter</p></div>
+          <div className="contact"><p>Email</p></div>
         </div>
-        <div className="line2">
-          <div className="arts">Read new updates</div>
-          <div className="arts">Privacy Policy</div>
-          <div className="arts">User Policy</div>
-        </div>
-        <div className="line3">
-          <div className="arts">About Us</div>
-          <div className="arts">Careers</div>
-          <div className="arts">Services</div>
-        </div>
-        <div className="contact"><h4 className="contact_header">Contact us on</h4></div>
-        <div className="contact"><p>Phone: +91 1234567890</p></div>
-        <div className="contact"><p>Twitter</p></div>
-        <div className="contact"><p>Email</p></div>
-      </div>
       </div>
     </>
   )

@@ -31,23 +31,16 @@ const GovernmentAdd = () => {
         e.preventDefault();
         try{
             if(selectedType.value==1){
-                console.log(address,accounts[0])
-                await contract.methods.addCitizen(address).send({from: accounts[0], gas:"610000"});
-                const payload = { email: email, address: setAddress, password: "123456", address: address, usertype: user.type };
-                const result = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/signup",payload);
-                setResponse(result.data);
+                const payload = { email: email, address: setAddress, password: "123456", type: selectedType.value, address: address };
+                await contract.methods.addCitizen(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
             }
             else if(selectedType.value==2){
-                await contract.methods.addEducationalInstitution(address).send({from: accounts[0], gas:"610000"});
-                const payload = { email: email, address: setAddress, password: "123456", address: address, usertype: user.type };
-                const result = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/signup",payload);
-                setResponse(result.data);
+                const payload = { email: email, address: setAddress, password: "123456",type: selectedType.value, address: address };
+                await contract.methods.addEducationalInstitution(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
             }
             else if(selectedType.value==3){
-                await contract.methods.addOrganization(address).send({from: accounts[0], gas:"610000"});
-                const payload = { email: email, address: setAddress, password: "123456", address: address, usertype: user.type };
-                const result = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/signup",payload);
-                setResponse(result.data);
+                const payload = { email: email, address: setAddress, password: "123456",type: selectedType.value, address: address };
+                await contract.methods.addOrganization(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
             }
         }
         catch(err){

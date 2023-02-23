@@ -15,7 +15,6 @@ const EducationalAdd = () => {
 
     const submitHandler = async(e) => {
         e.preventDefault();
-        console.log("hello");
         const payload = { studentEmail: studentEmail, file: uploadedFile };
         const fileInput = document.querySelector('input[type="file"]')
         const response = await client.put(fileInput.files)
