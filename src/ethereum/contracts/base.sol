@@ -7,6 +7,7 @@ contract Record {
     uint256 public organization_count;
     address public administrator;
     mapping(address => string) public authentication;
+    mapping(string => address) public emailToAddress;
     mapping(address => string) public resume;
     mapping(address => bool) public citizen;
     mapping(address => bool) public educational_institutions;
@@ -24,29 +25,33 @@ contract Record {
     constructor(){
         administrator = msg.sender;
         authentication[msg.sender] = "{\"email\":\"eseva@gmail.com\",\"password\":\"123456\",\"type\":4}";
+        emailToAddress["eseva@gmail.com"] = msg.sender;
     }
 
-    function addCitizen(address citi, string memory auth) public payable {
+    function addCitizen(address citi, string memory auth, string memory email) public payable {
         require(msg.sender == administrator);
         citizen[citi] = true;
         authentication[citi] = auth;
         resume[citi] = auth;
+        emailToAddress[email] = citi;
         citizen_count++;
     }
 
-    function addEducationalInstitution(address educational, string memory auth) public payable {
+    function addEducationalInstitution(address educational, string memory auth, string memory email) public payable {
         require(msg.sender == administrator);
         educational_institutions[educational] = true;
         authentication[educational] = auth;
         resume[educational] = auth;
+        emailToAddress[email] = educational;
         educational_institutions_count++;
     }
 
-    function addOrganization(address org, string memory auth) public payable {
+    function addOrganization(address org, string memory auth, string memory email) public payable {
         require(msg.sender == administrator);
         organization[org] = true;
         authentication[org] = auth;
         resume[org] = auth;
+        emailToAddress[email] = org;
         organization_count++;
     }
     
@@ -84,8 +89,7 @@ contract Record {
         }
         government_documents[citi].push(del);
         government_documents_count[citi]++;
-        resume[citi] = string.concat(resume[citi],"\n");
-        resume[citi] = string.concat(resume[citi],description);
+        resume[citi] = description;
     }
 
     function addEducationalDocument(address citi, uint256[] memory doc, string memory description) public payable {
@@ -97,8 +101,7 @@ contract Record {
         }
         educational_documents[citi].push(del);
         educational_documents_count[citi]++;
-        resume[citi] = string.concat(resume[citi],"\n");
-        resume[citi] = string.concat(resume[citi],description);
+        resume[citi] = description;
     }
 
     function addOrganizationDocument(address citi, uint256[] memory doc, string memory description) public payable {
@@ -110,8 +113,7 @@ contract Record {
         }
         organizational_documents[citi].push(del);
         organizational_documents_count[citi]++;
-        resume[citi] = string.concat(resume[citi],"\n");
-        resume[citi] = string.concat(resume[citi],description);
+        resume[citi] = description;
     }
 
     function getGovernmentDocument(address citi) public view returns (uint256[] memory) {
@@ -136,4 +138,7 @@ contract Record {
         return resume[citi];
     }
 
+    function getAddress(string memory citi) public view returns(address){
+        return emailToAddress[citi];
+    }
 }

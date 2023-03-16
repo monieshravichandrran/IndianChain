@@ -30,12 +30,12 @@ const EducationalView = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        const studentAddress = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/get-address", { email: studentEmail });
-        const asciiArray = await contract.methods.getEducationalDocument(studentAddress.data.address).call({ from: accounts[0] });
-        console.log(asciiArray);
+        const studentAddress = await contract.methods.getAddress(studentEmail).call({from: accounts[0]});
+        console.log(studentAddress);
+        const asciiArray = await contract.methods.getEducationalDocument(studentAddress).call({ from: accounts[0] });
+        const resume = await contract.methods.getResume(studentAddress).call({from: accounts[0]});
+        const d = resume.split("\n");
         const fileArray = convertToString(asciiArray);
-        //const answer = await axios.post("http://localhost:8000" + "/get-doc", fileArray);
-        //console.log(answer);
         console.log(fileArray)
         setFiles(fileArray);
         setShowFiles(true);

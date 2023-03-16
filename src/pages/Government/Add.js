@@ -32,15 +32,15 @@ const GovernmentAdd = () => {
         try{
             if(selectedType.value==1){
                 const payload = { email: email, address: setAddress, password: "123456", type: selectedType.value, address: address };
-                await contract.methods.addCitizen(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
+                await contract.methods.addCitizen(address,JSON.stringify(payload),email).send({from: accounts[0], gas:"610000"});
             }
             else if(selectedType.value==2){
                 const payload = { email: email, address: setAddress, password: "123456",type: selectedType.value, address: address };
-                await contract.methods.addEducationalInstitution(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
+                await contract.methods.addEducationalInstitution(address,JSON.stringify(payload),email).send({from: accounts[0], gas:"610000"});
             }
             else if(selectedType.value==3){
                 const payload = { email: email, address: setAddress, password: "123456",type: selectedType.value, address: address };
-                await contract.methods.addOrganization(address,JSON.stringify(payload)).send({from: accounts[0], gas:"610000"});
+                await contract.methods.addOrganization(address,JSON.stringify(payload),email).send({from: accounts[0], gas:"610000"});
             }
         }
         catch(err){

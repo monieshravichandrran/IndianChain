@@ -8,6 +8,7 @@ import axios from "axios";
 const EducationalAdd = () => {
     const [studentEmail, setStudentEmail] = useState();
     const [uploadedFile, setUploadedFile] = useState("");
+    const [description, setDescription] = useState("");
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
     const { accounts, contract } = useSelector((state) => state);
@@ -22,10 +23,12 @@ const EducationalAdd = () => {
         for (let i = 0; i < response.length; ++i)
           asciiArray.push(response.charCodeAt(i));
         console.log(asciiArray);
-        const studentAddress = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+"/get-address",{email: studentEmail});
-        console.log(studentAddress)
+        const studentAddress = await contract.methods.getAddress(studentEmail).call({from: accounts[0]});
+        console.log(studentAddress);
         try{
-            contract.methods.addEducationalDocument(studentAddress.data.address,asciiArray).send({from: accounts[0], gas: "6100000"});
+            console.log(studentAddress,asciiArray,description)
+            const desc = await contract.methods.getResume(studentAddress).call({from: accounts[0]}) + "\n" + description;
+            contract.methods.addEducationalDocument(studentAddress,asciiArray,desc).send({from: accounts[0], gas: "6100000"});
         }catch(err){
             console.log(err);
         }
@@ -33,7 +36,7 @@ const EducationalAdd = () => {
 
     return (<>
         <ul className="ul">
-            <Link to="/" className="li"><span className="a">IndiaChain</span></Link>
+            <Link to="/" className="li"><span className="a">IndianChain</span></Link>
             <Link to="/add" className="li active"><span className="a">Add Files</span></Link>
             <Link to="/view" className="li"><span className="a">View Student</span></Link>
             <Link to="/profile" className="li"><span className="a">Profile</span></Link>
@@ -54,6 +57,12 @@ const EducationalAdd = () => {
                         Email of the Student
                     </label>
                     <input value={studentEmail} onChange={(event) => { setStudentEmail(event.target.value) }} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="eventname" type="text" placeholder="Email" />
+                </div>
+                <div class="mb-4 mt-12 md:mx-10 mx-2">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Description of the document
+                    </label>
+                    <input value={description} onChange={(event) => { setDescription(event.target.value) }} class="shadow h-[10vh] appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="eventname" type="text" placeholder="Email" />
                 </div>
                 <div class="mb-4 mt-12 md:mx-10">
                     <label class="block text-gray-700 text-sm font-bold mb-2">

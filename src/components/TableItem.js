@@ -7,19 +7,19 @@ const TableItem = ({ from, type, user }) => {
     const dispatch = useDispatch();
     const { accounts, contract } = useSelector((state) => state);
     const acceptHandler = async () => {
-        const fromAddress = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/get-address", { email: from });
+        const fromAddress = await contract.methods.getAddress(from).call({from: accounts[0]});
         console.log(fromAddress,accounts[0])
         if (type == 1) {
-            console.log(contract.methods.provideReadAccess, fromAddress.data);
+            console.log(fromAddress.data.address);
             try {
-                await contract.methods.provideReadAccess(fromAddress.data.address).send({ from: accounts[0], gas: "6100000" });
+                await contract.methods.provideReadAccess(fromAddress).send({ from: accounts[0], gas: "6100000" });
             } catch (err) {
                 console.log(err);
             }
         }
         else if (type == 2) {
             try {
-                await contract.methods.provideWriteAccess(fromAddress.data.address).send({ from: accounts[0], gas: "6100000" });
+                await contract.methods.provideWriteAccess(fromAddress).send({ from: accounts[0], gas: "6100000" });
             } catch (err) {
 
             }
