@@ -4,7 +4,6 @@ import "../../styles/Login.css";
 import { Web3Storage } from 'web3.storage';
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import FileViewer from 'react-file-viewer';
 
 const EducationalView = () => {
     const [studentEmail, setStudentEmail] = useState();
