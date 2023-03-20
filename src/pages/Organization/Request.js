@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Login.css";
-import { Web3Storage } from 'web3.storage';
 import Select from "react-select";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 const OrganizationalRequest = () => {
   const [studentEmail, setStudentEmail] = useState();
-  const [uploadedFile, setUploadedFile] = useState("");
   const [message, setMessage] = useState();
   const [selectedType, setSelectedType] = useState();
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
-  const { accounts, contract } = useSelector((state) => state);
 
   const options = [
     {

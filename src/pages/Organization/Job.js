@@ -13,6 +13,12 @@ const OrganizationalJob = () => {
   const user = useSelector((state) => state.auth);
   const { accounts, contract } = useSelector((state) => state);
   const client = new Web3Storage({ token: process.env.REACT_APP_WEB3_IPFS_TOKEN });
+  const jobTitles = [{ label: 'Data Science', value: 'Data Science' }, { label: 'HR', value: 'HR' }, { label: 'Advocate', value: 'Advocate' }, { label: 'Arts', value: 'Arts' }, { label: 'Web Designing', value: 'Web Designing' },
+  { label: 'Mechanical Engineer', value: 'Mechanical Engineer' }, { label: 'Sales', value: 'Sales' }, { label: 'Health and fitness', value: 'Health and fitness' }, { label: 'Civil Engineer', value: 'Civil Engineer' },
+  { label: 'Java Developer', value: 'Java Developer' }, { label: 'Business Analyst', value: 'Business Analyst' }, { label: 'SAP Developer', value: 'SAP Developer' }, { label: 'Automation Testing', value: 'Automation Testing' },
+  { label: 'Electrical Engineering', value: 'Electrical Engineering' }, { label: 'Operations Manager', value: 'Operations Manager' }, { label: 'Python Developer', value: 'Python Developer' },
+  { label: 'DevOps Engineer', value: 'DevOps Engineer' }, { label: 'Network Security Engineer', value: 'Network Security Engineer' }, { label: 'PMO', value: 'PMO' }, { label: 'Database', value: 'Database' }, { label: 'Hadoop', value: 'Hadoop' },
+  { label: 'ETL Developer', value: 'ETL Developer' }, { label: 'DotNet Developer', value: 'DotNet Developer' }, { label: 'Blockchain', value: 'Blockchain' }, { label: 'Testing', value: 'Testing' }];
 
   const submitHandler = async (e) => {
     e.preventDefault();
