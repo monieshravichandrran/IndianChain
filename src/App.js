@@ -12,6 +12,9 @@ import EducationalRequest from "./pages/Educational/Request";
 import EducationalView from "./pages/Educational/View";
 
 import Organization from "./pages/Organization/Home";
+import OrganizationalAdd from "./pages/Organization/Add";
+import OrganizationalJob from "./pages/Organization/Job";
+import OrganizationalView from "./pages/Organization/View";
 
 import Government from "./pages/Government/Home";
 import GovernmentAdd from "./pages/Government/Add";
@@ -20,6 +23,7 @@ import Record from "./ethereum/build/Record.json";
 import web3 from "./ethereum/web3";
 import { useDispatch } from "react-redux";
 import NotFound from "./pages/NotFound";
+import OrganizationalRequest from "./pages/Organization/Request";
 
 export const RouteContext = createContext();
 
@@ -53,7 +57,7 @@ const App = () => {
             <>{type == 1 ?
               <>
                 <Route path="/" element={<Citizen />} />
-                <Route path="/request" element={<CitizenRequest />}/>
+                <Route path="/request" element={<CitizenRequest />} />
                 <Route path="/view" element={<CitizenView />} />
                 <Route path="*" element={<NotFound />} />
               </> :
@@ -69,6 +73,10 @@ const App = () => {
                     {type == 3 ?
                       <>
                         <Route path="/" element={<Organization />} />
+                        <Route path="/add" element={<OrganizationalAdd />} />
+                        <Route path="view" element={<OrganizationalView />} />
+                        <Route path="/job" element={<OrganizationalJob />} />
+                        <Route path="/request" element={<OrganizationalRequest />} />
                         <Route path="*" element={<NotFound />} />
                       </>
                       :

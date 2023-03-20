@@ -3,19 +3,20 @@ import india from "../../images/india.png";
 import "../../styles/Login.css";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom"
 
 const Organization = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   return (
     <>
-      <div className="topnav">
-        <span className="spans">Indian Chain</span>
-        <span className="span inactive">Add Employee</span>
-        <span className="span inactive">View Employee</span>
-        <span className="span inactive">Profile</span>
-        <button className="btn">Logout</button>
-      </div>
+      <ul className="ul">
+        <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
+        <Link to="/add" className="li"><span className="a">Add Files</span></Link>
+        <Link to="/view" className="li"><span className="a">View Employee</span></Link>
+        <Link to="/request" className="li"><span className="a">Request</span></Link>
+        <Link to="/job" className="li"><span className="a">Jobs</span></Link>
+      </ul>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain

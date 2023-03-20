@@ -62,7 +62,7 @@ const EducationalAdd = () => {
                     <label class="block text-gray-700 text-sm font-bold mb-2">
                         Description of the document
                     </label>
-                    <input value={description} onChange={(event) => { setDescription(event.target.value) }} class="shadow h-[10vh] appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="eventname" type="text" placeholder="Email" />
+                    <input value={description} onChange={(event) => { setDescription(event.target.value) }} class="shadow h-[10vh] appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="eventname" type="text" placeholder="Description" />
                 </div>
                 <div class="mb-4 mt-12 md:mx-10">
                     <label class="block text-gray-700 text-sm font-bold mb-2">

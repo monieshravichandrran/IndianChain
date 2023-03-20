@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def fn():
-    sample_resume = "I am a lawyer practiced for the past 5 years. I am good at civil law, criminal law and so on"
+    sample_resume = "I am law student"
     clean_text = preprocess_text(sample_resume)
     return model.predict([clean_text])[0]
 
