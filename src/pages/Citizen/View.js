@@ -34,20 +34,19 @@ const CitizenView = () => {
   return (
     <>
       <ul className="ul">
-        <Link to="/" className="li"><span className="a">IndiaChain</span></Link>
-        <Link to="/request" className="li active"><span className="a">Requests</span></Link>
+        <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
+        <Link to="/request" className="li"><span className="a">Requests</span></Link>
         <Link to="/view" className="li"><span className="a">View your chain</span></Link>
-        <Link to="/profile" className="li"><span className="a">Profile</span></Link>
-        <Link to="/request" className="li"><span className="a">Logout</span></Link>
+        <Link to="/job" className="li"><span className="a">Job</span></Link>
       </ul>
       {show ?
         <>
           <div className="w-full flex justify-center">
             <div>
-            <h2 className="mt-20 text-orange-400 text-4xl">
-              Indian Chain
-            </h2>
-            <p align="center" className="mt-12">You have {requests?.length} requests</p>
+              <h2 className="mt-20 text-orange-400 text-4xl">
+                Indian Chain
+              </h2>
+              <p align="center" className="mt-12">You have {requests?.length} requests</p>
             </div>
           </div>
           <div class="flex flex-col">
@@ -72,7 +71,7 @@ const CitizenView = () => {
                       </tr>
                     </thead>
                     <tbody className="">
-                      {requests?.map((item)=>
+                      {requests?.map((item) =>
                         <TableItem
                           from={item.authority}
                           type={item.type}

@@ -14,7 +14,7 @@ const Citizen = () => {
         <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
         <Link to="/request" className="li"><span className="a">Requests</span></Link>
         <Link to="/view" className="li"><span className="a">View your chain</span></Link>
-        <Link to="/request" className="li"><span className="a">Logout</span></Link>
+        <Link to="/job" className="li"><span className="a">Job</span></Link>
       </ul>
       <div className="single_view">
         <h2 className="heading">

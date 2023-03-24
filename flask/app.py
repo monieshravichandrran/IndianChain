@@ -1,8 +1,10 @@
 import pandas as pd
-from flask import Flask 
+from flask import Flask, request
 import pickle
 import string
 import re
+import json
+from flask_cors import CORS, cross_origin
 
 model = pickle.load(open('job_model.pkl', 'rb'))
 
@@ -19,9 +21,12 @@ def preprocess_text(text):
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/job", methods=['POST'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def fn():
-    sample_resume = "I am law student"
+    form = json.loads(request.data.decode())
+    sample_resume = form['resume']
+    print(sample_resume)
     clean_text = preprocess_text(sample_resume)
     return model.predict([clean_text])[0]
 

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Citizen from "./pages/Citizen/Home";
 import CitizenView from "./pages/Citizen/View";
 import CitizenRequest from "./pages/Citizen/Request";
+import Job from "./pages/Citizen/Job";
 
 import Educational from "./pages/Educational/Home";
 import EducationalAdd from "./pages/Educational/Add";
@@ -59,6 +60,7 @@ const App = () => {
                 <Route path="/" element={<Citizen />} />
                 <Route path="/request" element={<CitizenRequest />} />
                 <Route path="/view" element={<CitizenView />} />
+                <Route path="/job" element={<Job />} />
                 <Route path="*" element={<NotFound />} />
               </> :
               <>

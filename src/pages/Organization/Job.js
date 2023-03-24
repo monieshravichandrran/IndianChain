@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import "../../styles/Login.css";
 import { Web3Storage } from 'web3.storage';
 import { useSelector, useDispatch } from "react-redux";
+import Select from "react-select";
 import axios from "axios";
 
 const OrganizationalJob = () => {
-  const [studentEmail, setStudentEmail] = useState();
-  const [uploadedFile, setUploadedFile] = useState("");
+  const [jobTitle, setJobTitle] = useState();
   const [jobDescription, setJobDescription] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
-  const { accounts, contract } = useSelector((state) => state);
+  const { accounts, contract, auth } = useSelector((state) => state);
   const client = new Web3Storage({ token: process.env.REACT_APP_WEB3_IPFS_TOKEN });
   const jobTitles = [{ label: 'Data Science', value: 'Data Science' }, { label: 'HR', value: 'HR' }, { label: 'Advocate', value: 'Advocate' }, { label: 'Arts', value: 'Arts' }, { label: 'Web Designing', value: 'Web Designing' },
   { label: 'Mechanical Engineer', value: 'Mechanical Engineer' }, { label: 'Sales', value: 'Sales' }, { label: 'Health and fitness', value: 'Health and fitness' }, { label: 'Civil Engineer', value: 'Civil Engineer' },
@@ -22,13 +22,16 @@ const OrganizationalJob = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const studentAddress = await contract.methods.getAddress(studentEmail).call({ from: accounts[0] });
-    console.log(studentAddress);
+    const payload = {
+      organization: auth.user,
+      description: jobDescription,
+      title: jobTitle.value,
+    };
+    console.log(payload);
     try {
-      // const desc = await contract.methods.getResume(studentAddress).call({ from: accounts[0] }) + "\n" + description;
-      // contract.methods.addEducationalDocument(studentAddress, asciiArray, desc).send({ from: accounts[0], gas: "6100000" });
+      await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+"/post-job",payload);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   }
 
@@ -55,6 +58,19 @@ const OrganizationalJob = () => {
             Job Description
           </label>
           <input value={jobDescription} onChange={(event) => { setJobDescription(event.target.value) }} class="shadow h-[20vh] appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="eventname" type="text" placeholder="Job Description" />
+        </div>
+        <div class="mb-4 mt-12 md:mx-10">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            User Type :
+          </label>
+          <Select
+            options={jobTitles}
+            value={jobTitle}
+            onChange={(selectedOption) => {
+              setJobTitle(selectedOption);
+            }}
+            className="h-40"
+          />
         </div>
         <button className="bg-blue-600 text-white flex m-auto mt-10 p-2 border rounded" onClick={submitHandler}>Add Job</button>
       </div>
