@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Login.css";
 import { Web3Storage } from 'web3.storage';
@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
 import axios from "axios";
 import MyJobs from "../../components/MyJobs";
+import RecommendApply from "../../components/RecommendApplicants";
+
+export const JobContext = createContext();
 
 const PostedJobs = () => {
   const dispatch = useDispatch();
@@ -13,7 +16,8 @@ const PostedJobs = () => {
   const { accounts, contract, auth } = useSelector((state) => state);
   const client = new Web3Storage({ token: process.env.REACT_APP_WEB3_IPFS_TOKEN });
   const [show, setShow] = useState(false);
-  const [showJob, seShowJob] = useState(false);
+  const [showJob, setShowJob] = useState(false);
+  const [recommendApplicants, setRecommendApplicants] = useState();
   const [Jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const PostedJobs = () => {
       const resum = await contract.methods.getResume(add).call({ from: accounts[0] });
       resume.push(resum);
     }
-    const result = await axios.post("http://localhost:8000/recommend", { title: title, description: description, resume: resume, applicants: applicants },{
+    const result = await axios.post("http://localhost:8000/recommend", { title: title, description: description, resume: resume, applicants: applicants }, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
@@ -43,7 +47,7 @@ const PostedJobs = () => {
 
 
 
-  return (<>
+  return (<JobContext.Provider value={{ setShowJob, setRecommendApplicants }}>
     <ul className="ul">
       <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
       <Link to="/add" className="li"><span className="a">Add Files</span></Link>
@@ -59,13 +63,23 @@ const PostedJobs = () => {
               Indian Chain
             </h2>
           </div>
-          <div>
-            {/* {Jobs.map((item) => {
-              return (
-                <MyJobs title={item.title} description={item.description} _id={item._id} key={item._id} jobSelected={jobSelected} />
-              )
-            })} */}
-          </div>
+          <table class="min-w-full text-center">
+            <thead class="border-b">
+              <tr className="border-b bg-indigo-100 border-indigo-200">
+                <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                  SNO
+                </th>
+                <th scope="col" class="text-bold text-gray-900 px-2 md:px-6 py-4">
+                  Email of Applicant
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {recommendApplicants.map((item, index) => {
+                return (<RecommendApply index={index + 1} email={item} />)
+              })}
+            </tbody>
+          </table>
         </div>
       </> :
       <>
@@ -95,13 +109,13 @@ const PostedJobs = () => {
             <tbody>
               {Jobs.map((item) => {
                 return (
-                  <MyJobs title={item.title} description={item.description} _id={item._id} key={item._id} />
+                  <MyJobs title={item.title} description={item.description} _id={item._id} key={item._id} setShowJob={setShowJob} />
                 )
               })}
             </tbody>
           </table> : null}
       </>}
-  </>)
+  </JobContext.Provider>)
 }
 
 export default PostedJobs;

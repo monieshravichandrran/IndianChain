@@ -1,11 +1,12 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 import axios from "axios";
+import { JobContext } from "../pages/Organization/PostedJobs";
 import { useSelector, useDispatch } from "react-redux";
 const MyJobs = ({ description, title, _id }) => {
   const dispatch = useDispatch();
   const { accounts, contract } = useSelector((state) => state);
   const user = useSelector((state) => state.auth);
-  const [recommendedList,setRecommendedList] = useState();
+  const Job = useContext(JobContext);
 
   const jobSelected = async () => {
     console.log({jobId: _id});
@@ -28,7 +29,8 @@ const MyJobs = ({ description, title, _id }) => {
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       }
     });
-    console.log(result);
+    Job.setRecommendApplicants(result.data);
+    Job.setShowJob(true);
   }
 
   return (
