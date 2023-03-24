@@ -10,7 +10,7 @@ const MyJobs = ({ description, title, _id }) => {
 
   const jobSelected = async () => {
     console.log({jobId: _id});
-    const applicants = await axios.post("http://localhost:8080/get-job-applicants", { jobId: _id });
+    const applicants = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+"/get-job-applicants", { jobId: _id });
     console.log(applicants.data);
     let resume = [];
     let applicantss = [];
