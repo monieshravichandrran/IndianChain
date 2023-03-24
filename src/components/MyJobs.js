@@ -9,16 +9,12 @@ const MyJobs = ({ description, title, _id }) => {
   const Job = useContext(JobContext);
 
   const jobSelected = async () => {
-    console.log({jobId: _id});
-    const applicants = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL+"/get-job-applicants", { jobId: _id });
-    console.log(applicants.data);
+    const applicants = await axios.post("http://localhost:8080/get-job-applicants", { jobId: _id });
     let resume = [];
     let applicantss = [];
     for (const applicant of applicants.data) {
-      console.log(applicant.email);
       const add = await contract.methods.getAddress(applicant.email).call({ from: accounts[0] });
       applicantss.push(applicant.email);
-      console.log("add",add);
       const resum = await contract.methods.getResume(add).call({ from: accounts[0] });
       resume.push(resum);
     }

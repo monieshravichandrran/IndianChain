@@ -58,20 +58,25 @@ def fn():
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def fn2():
     form = json.loads(request.data.decode())
-    keywords = all_keywords[form["title"]]
-    doc = nlp(form["description"])
+    keywordsy = all_keywords[form["title"]]
+    keywords = []
+    for i in keywordsy:
+        keywords.append(i.lower())
+    doc = nlp(form["description"].lower())
     noun_phrases = [" ".join(token.text for token in chunk if not token.is_stop and token.text not in punctuations) for chunk in doc.noun_chunks if any(keyword in chunk.text for keyword in keywords)]
     noun_phrase_counts = Counter(noun_phrases)
     job_keywords = [noun_phrase for noun_phrase, count in noun_phrase_counts.most_common(5)]
     resumes = form["resume"]
     applicants = form["applicants"]
     answer = dict()
+    print(job_keywords)
     for i in range(len(resumes)):
-        doc = nlp(resumes[i])
+        doc = nlp(resumes[i].lower())
         noun_phrases = [" ".join(token.text for token in chunk if not token.is_stop and token.text not in punctuations) for chunk in doc.noun_chunks]
         keyword_matches = [any(keyword in noun_phrase for noun_phrase in noun_phrases) for keyword in job_keywords]
         if applicants[i] not in answer:
             answer[applicants[i]] = keyword_matches
+    print(answer)
     recommendation = sorted(answer,reverse=True)
     return recommendation
 

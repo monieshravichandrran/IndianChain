@@ -29,22 +29,6 @@ const PostedJobs = () => {
     fn();
   }, [])
 
-  const jobSelected = async (id, title, description) => {
-    const applicants = await axios.post(process.env.REACT_APP_BACKEND_API_BASE_URL + "/get-job-applicants", { jobId: id });
-    let resume = [];
-    for (const applicant of applicants) {
-      const add = await contract.methods.getAddress(applicant).call({ from: accounts[0] });
-      const resum = await contract.methods.getResume(add).call({ from: accounts[0] });
-      resume.push(resum);
-    }
-    const result = await axios.post("http://localhost:8000/recommend", { title: title, description: description, resume: resume, applicants: applicants }, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      }
-    });
-  }
-
 
 
   return (<JobContext.Provider value={{ setShowJob, setRecommendApplicants }}>
