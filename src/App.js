@@ -16,6 +16,7 @@ import Organization from "./pages/Organization/Home";
 import OrganizationalAdd from "./pages/Organization/Add";
 import OrganizationalJob from "./pages/Organization/Job";
 import OrganizationalView from "./pages/Organization/View";
+import PostedJobs from "./pages/Organization/PostedJobs";
 
 import Government from "./pages/Government/Home";
 import GovernmentAdd from "./pages/Government/Add";
@@ -79,6 +80,7 @@ const App = () => {
                         <Route path="view" element={<OrganizationalView />} />
                         <Route path="/job" element={<OrganizationalJob />} />
                         <Route path="/request" element={<OrganizationalRequest />} />
+                        <Route path="/jobs/posted" element={<PostedJobs />} />
                         <Route path="*" element={<NotFound />} />
                       </>
                       :

@@ -48,7 +48,8 @@ const OrganizationalJob = () => {
         <h2 className="heading">
           Indian Chain
         </h2>
-        <h1 className="mt-10 color-blue-600 font-bold text-xl md:text-3xl">Add a New Job in the Chain</h1>
+        <h1 className="mt-10 color-blue-600 font-bold text-xl md:text-3xl mb-4">Add a New Job in the Chain</h1>
+        <Link to="/jobs/posted" className="mt-10 font-bold text-xl md:text-xl bg-red-500 text-white p-2">Posted Jobs</Link>
       </div>
     </div>
     <div className="flex justify-center">
