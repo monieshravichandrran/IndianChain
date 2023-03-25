@@ -40,8 +40,4 @@ noun_phrases = [" ".join(token.text for token in chunk if not token.is_stop and 
 # Check whether each job keyword appears in the resume noun phrases
 keyword_matches = [any(keyword in noun_phrase for noun_phrase in noun_phrases) for keyword in job_keywords]
 
-# Determine whether the candidate is suitable based on the number of job keyword matches
-if sum(keyword_matches) >= len(job_keywords)/2:
-    print("Candidate is suitable for the job.")
-else:
-    print("Candidate is not suitable for the job.")
+print(job_keywords,keyword_matches)

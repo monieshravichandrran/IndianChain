@@ -74,11 +74,18 @@ def fn2():
         doc = nlp(resumes[i].lower())
         noun_phrases = [" ".join(token.text for token in chunk if not token.is_stop and token.text not in punctuations) for chunk in doc.noun_chunks]
         keyword_matches = [any(keyword in noun_phrase for noun_phrase in noun_phrases) for keyword in job_keywords]
-        if applicants[i] not in answer:
-            answer[applicants[i]] = keyword_matches
+        count = 0
+        for it in keyword_matches:
+            if it:
+                count += 1
+        print(keyword_matches, applicants[i], count)
+        answer[applicants[i]] = count
     print(answer)
-    recommendation = sorted(answer,reverse=True)
+    recommendation = sorted(answer,reverse=False)
+    print(recommendation)
     return recommendation
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
+
+
