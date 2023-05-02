@@ -13,16 +13,16 @@ const JobItem = ({ organization, description, title, _id}) => {
   }
   return (
     <tr class="border-b bg-gray-800 boder-gray-900">
-      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4 whitespace-nowrap">
+      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4">
         {organization}
       </td>
-      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4 whitespace-nowrap">
+      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4">
         {title}
       </td>
-      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4 whitespace-nowrap">
+      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4">
         {description}
       </td>
-      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4 whitespace-nowrap">
+      <td class="text-sm md:text-md text-white font-sans px-2 md:px-6 py-4">
         <button
           class="h-7 w-7 rounded-full ring-2 ring-white text-white bg-green-500 p-1 text-xl"
           onClick={jobApply}

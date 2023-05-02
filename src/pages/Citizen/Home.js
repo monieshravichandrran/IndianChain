@@ -21,7 +21,7 @@ const Citizen = () => {
           Indian Chain
         </h2>
         <h1 className="welcome_message">Welcome <b>{user.user}</b> to your professional community</h1>
-        <p className="caption">A single place for all your documents and managing citizens</p>
+        <p className="caption">A single place for all your documents and managing candidates</p>
         <img className="india_img" src={india} alt="India" />
       </div>
       <div className="double_view">

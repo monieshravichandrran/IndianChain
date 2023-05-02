@@ -12,14 +12,14 @@ const Government = () => {
     <>
       <ul className="ul">
         <Link to="/" className="li active"><span className="a">IndiaChain</span></Link>
-        <Link to="/citizen/add" className="li"><span className="a">Add Users</span></Link>
+        <Link to="/candidate/add" className="li"><span className="a">Add Users</span></Link>
       </ul>
       <div className="single_view">
         <h2 className="heading">
           Indian Chain
         </h2>
         <h1 className="welcome_message">Welcome <b>{user.user}</b> to your professional community</h1>
-        <p className="caption">A single place for all your documents and managing citizens</p>
+        <p className="caption">A single place for all your documents and managing candidates</p>
         <img className="india_img" src={india} alt="India" />
       </div>
       <div className="double_view">

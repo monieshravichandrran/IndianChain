@@ -8,7 +8,7 @@ import axios from "axios";
 
 const GovernmentAdd = () => {
   const options = [{
-    label: "Citizen",
+    label: "Candidate",
     value: 1
   }, {
     label: "Educational Institutions",
@@ -18,7 +18,7 @@ const GovernmentAdd = () => {
     value: 3
   }]
   const [email, setEmail] = useState();
-  const [selectedType, setSelectedType] = useState({ label: "Citizen", type: 1 });
+  const [selectedType, setSelectedType] = useState({ label: "Candidate", type: 1 });
   const [address, setAddress] = useState();
   const [response, setResponse] = useState();
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const GovernmentAdd = () => {
   return (<>
     <ul className="ul">
       <Link to="/" className="li"><span className="a">IndiaChain</span></Link>
-      <Link to="/citizen/add" className="li active"><span className="a">Add Users</span></Link>
+      <Link to="/candidate/add" className="li active"><span className="a">Add Users</span></Link>
     </ul>
     <div className="flex justify-center mb-24">
       <div>

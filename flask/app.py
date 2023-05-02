@@ -8,6 +8,7 @@ from flask_cors import CORS, cross_origin
 from collections import Counter
 import string
 import spacy
+import time
 
 
 model = pickle.load(open('job_model.pkl', 'rb'))
@@ -57,6 +58,7 @@ def fn():
 @app.route("/recommend",methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def fn2():
+    start_time = time.time()
     form = json.loads(request.data.decode())
     keywordsy = all_keywords[form["title"]]
     keywords = []
@@ -83,6 +85,8 @@ def fn2():
     print(answer)
     recommendation = sorted(answer,reverse=False)
     print(recommendation)
+    end_time = time.time()
+    print("Time Taken for recommendation : ", end_time - start_time)
     return recommendation
 
 if __name__ == "__main__":

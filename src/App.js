@@ -87,7 +87,7 @@ const App = () => {
                       <>{type == 4 ?
                         <>
                           <Route path="/" element={<Government />} />
-                          <Route path="/citizen/add" element={<GovernmentAdd />} />
+                          <Route path="/candidate/add" element={<GovernmentAdd />} />
                           <Route path="*" element={<NotFound />} />
                         </> : null}
                       </>}

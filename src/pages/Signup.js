@@ -31,7 +31,7 @@ const Signup = () => {
           Indian Chain
         </h2>
         <h1 className="welcome_message">Welcome to your professional community</h1>
-        <p className="caption">A single place for all your documents and managing citizens</p>
+        <p className="caption">A single place for all your documents and managing candidates</p>
         <div className="form_box">
           <div className="email_wrapper">
             <TextField onChange={(e) => {
@@ -53,7 +53,7 @@ const Signup = () => {
           Indian Chain
         </h2>
           <h1 className="welcome_message">Welcome to your professional community</h1>
-          <p className="caption">A single place for all your documents and managing citizens</p>
+          <p className="caption">A single place for all your documents and managing candidates</p>
           <div className="form_box">
             <div className="email_wrapper">
               <TextField onChange={(e) => {
